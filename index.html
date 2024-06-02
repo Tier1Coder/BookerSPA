@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booker SPA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+            <button onclick="fetchAuthors()">Authors</button>
+            <button onclick="fetchBooks()">Books</button>
+    </header>
+    <main>
+        <div id="author-section" style="display: none">
+            <div id="author-form">
+                <input type="text" id="author-name" placeholder="Name">
+                <button onclick="addAuthor()">Add Author</button>
+            </div>
+            <ul id="authors-list"></ul>
+        </div>
+        <div id="book-section" style="display: none">
+            <div id="book-form">
+                <input type="text" id="book-title" placeholder="Title">
+                <select id="book-author"></select> 
+                <button onclick="addBook()">Add Book</button>
+            </div>
+            <ul id="books-list"></ul>
+        </div>
+        <div id="editBookDialog" style="display:none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 1px solid #ccc; padding: 20px; background-color: white; z-index: 1000;">
+            <form id="editBookForm">
+                <label for="editBookTitle">Book Title:</label>
+                <input type="text" id="editBookTitle" name="bookTitle"><br><br>
+                <label for="editBookAuthor">Book Author:</label>
+                <select id="editBookAuthor"></select><br><br>
+                <button type="button" onclick="submitEditBook()">Save Changes</button>
+                <button type="button" onclick="closeEditBookDialog()">Cancel</button>
+            </form>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
