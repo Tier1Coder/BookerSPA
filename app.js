@@ -44,7 +44,7 @@ function fetchBooks() {
     .then(response => response.json())
     .then(books => {
         const list = document.getElementById('books-list');
-        list.innerHTML = '';  // Czyści listę przed dodaniem nowych elementów
+        list.innerHTML = '';
         books.forEach(book => {
             const li = document.createElement('li');
             const authorText = book.author ? ` by ${book.author.name}` : ' by unknown';
@@ -53,7 +53,6 @@ function fetchBooks() {
 
             const editButton = document.createElement('button');
             editButton.textContent = 'Edit';
-            // Przygotuj przekazywanie id autora, jeśli jest dostępne
             editButton.onclick = () => editBook(book._id, book.title, book.author ? book.author._id : '');
             li.appendChild(editButton);
 
@@ -188,7 +187,7 @@ function editBook(bookId, title, authorId) {
     document.getElementById('editBookTitle').value = title;
 
     const authorSelect = document.getElementById('editBookAuthor');
-    authorSelect.innerHTML = ''; // Clear existing options
+    authorSelect.innerHTML = ''; 
 
     fetch('http://localhost:3000/api/authors')
     .then(response => response.json())
@@ -201,7 +200,6 @@ function editBook(bookId, title, authorId) {
             authorSelect.appendChild(option);
         });
 
-        // Setup currentBookId globally or manage it another way
         window.currentBookId = bookId;
         document.getElementById('editBookDialog').style.display = 'block';
     });
